@@ -23,6 +23,7 @@
         <jodatime.version>2.5</jodatime.version>
         <junit.version>4.11</junit.version>
         <log4j.version>1.2.17</log4j.version>
+        <args4j.version>2.32</args4j.version>
 
     </properties>
 
@@ -45,8 +46,11 @@
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>args4j</groupId>
+            <artifactId>args4j</artifactId>
+            <version>${args4j.version}</version>
+        </dependency>
     </dependencies>
 
 
@@ -122,23 +126,19 @@
 
                 <!-- Make this jar executable -->
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
+                    <artifactId>maven-assembly-plugin</artifactId>
                     <configuration>
-                        <!-- DO NOT include log4j.properties file in your 
-                            Jar -->
-                        <excludes>
-                            <exclude>**/log4j.properties</exclude>
-                        </excludes>
                         <archive>
                             <manifest>
                                 <!-- Jar file entry point -->
                                 <mainClass>unidue.reserve_collections_command.App</mainClass>
                             </manifest>
                         </archive>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
                     </configuration>
                 </plugin>
-
             </plugins>
         </pluginManagement>
 
