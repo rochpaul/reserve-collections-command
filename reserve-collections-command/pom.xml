@@ -1,25 +1,82 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>unidue</groupId>
-  <artifactId>reserve-collections-command</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <groupId>unidue</groupId>
+    <artifactId>reserve-collections-command</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>reserve-collections-command</name>
-  <url>http://maven.apache.org</url>
+    <name>reserve-collections-command</name>
+    <url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+        <!-- license properties -->
+        <license.inceptionYear>2014</license.inceptionYear>
+        <license.organizationName>Universitaet Duisburg Essen</license.organizationName>
+        <license.licenseName>apache_v2</license.licenseName>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <finalName>reserve-collections</finalName>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>1.7</version>
+                    <configuration>
+                        <verbose>false</verbose>
+                        <addSvnKeyWords>true</addSvnKeyWords>
+                        <licenseName>apache_v2</licenseName>
+                        <roots>
+                            <root>src/main/java</root>
+                            <root>src/main/resources/unidue/rc/ui/components</root>
+                            <root>src/main/webapp/css</root>
+                            <root>src/main/webapp/js</root>
+                            <root>src/main/webapp/WEB-INF</root>
+                            <root>src/test</root>
+                        </roots>
+                        <excludes>
+                            <exclude>**/auto/*.java</exclude>
+                        </excludes>
+                        <includes>
+                            <include>Layout.tml</include>
+                            <include>**/*.java</include>
+                        </includes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>update-file-header</id>
+                            <goals>
+                                <goal>update-file-header</goal>
+                            </goals>
+                            <phase>process-sources</phase>
+                        </execution>
+                        <execution>
+                            <id>download-licenses</id>
+                            <goals>
+                                <goal>download-licenses</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+    </build>
 </project>
