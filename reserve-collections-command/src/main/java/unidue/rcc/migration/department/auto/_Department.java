@@ -1,15 +1,6 @@
 package unidue.rcc.migration.department.auto;
 
-import java.util.List;
-
 import org.apache.cayenne.PersistentObject;
-import org.apache.cayenne.ValueHolder;
-import org.apache.cayenne.util.PersistentObjectHolder;
-import org.apache.cayenne.util.PersistentObjectList;
-
-import unidue.rcc.migration.department.ropclient.Department;
-
-
 
 /**
  * A generated persistent class mapped as "Department" Cayenne entity. It is a good idea to
@@ -23,16 +14,12 @@ public abstract class _Department extends PersistentObject {
     public static final String LANG_PROPERTY = "lang";
     public static final String PARENT_ID_PROPERTY = "parentId";
     public static final String TEXT_PROPERTY = "text";
-    public static final String PARENT_PROPERTY = "parent";
-    public static final String SUBNODES_PROPERTY = "subnodes";
 
     protected String categoryId;
     protected String description;
     protected String lang;
     protected Integer parentId;
     protected String text;
-    protected ValueHolder parent;
-    protected List<Department> subnodes;
 
     public String getCategoryId() {
         if(objectContext != null) {
@@ -137,60 +124,6 @@ public abstract class _Department extends PersistentObject {
         }
         
         this.text = text;
-    }
-
-    public Department getParent() {
-        if(objectContext != null) {
-            objectContext.prepareForAccess(this, "parent", true);
-        } else if (this.parent == null) {
-        	this.parent = new PersistentObjectHolder(this, "parent");
-		}
-
-        return (Department) parent.getValue();
-    }
-    public void setParent(Department parent) {
-        if(objectContext != null) {
-            objectContext.prepareForAccess(this, "parent", true);
-        } else if (this.parent == null) {
-        	this.parent = new PersistentObjectHolder(this, "parent");
-		}
-
-        // note how we notify ObjectContext of change BEFORE the object is actually
-        // changed... this is needed to take a valid current snapshot
-        Object oldValue = this.parent.getValueDirectly();
-        if (objectContext != null) {
-        	objectContext.propertyChanged(this, "parent", oldValue, parent);
-        }
-        
-        this.parent.setValue(parent);
-    }
-
-    public List<Department> getSubnodes() {
-        if(objectContext != null) {
-            objectContext.prepareForAccess(this, "subnodes", true);
-        } else if (this.subnodes == null) {
-        	this.subnodes = new PersistentObjectList(this, "subnodes");
-		}
-
-        return subnodes;
-    }
-    public void addToSubnodes(Department object) {
-        if(objectContext != null) {
-            objectContext.prepareForAccess(this, "subnodes", true);
-        } else if (this.subnodes == null) {
-        	this.subnodes = new PersistentObjectList(this, "subnodes");
-		}
-
-        this.subnodes.add(object);
-    }
-    public void removeFromSubnodes(Department object) {
-        if(objectContext != null) {
-            objectContext.prepareForAccess(this, "subnodes", true);
-        } else if (this.subnodes == null) {
-        	this.subnodes = new PersistentObjectList(this, "subnodes");
-		}
-
-        this.subnodes.remove(object);
     }
 
 }

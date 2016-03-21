@@ -8,6 +8,8 @@ import org.apache.cayenne.remote.ClientChannel;
 import org.apache.cayenne.remote.ClientConnection;
 import org.apache.cayenne.remote.hessian.HessianConnection;
 
+import unidue.rcc.migration.department.ropclient.Department;
+
 /*
  * #%L
  * reserve-collections-command
@@ -43,6 +45,13 @@ public class App
         ClientConnection connection = new HessianConnection("http://localhost:8080/library-uni-due-model/cayenne-service");
         DataChannel channel = new ClientChannel(connection, false, new DefaultEventManager(), false);
         ObjectContext context = new CayenneContext(channel);
+        
+        Department department = context.newObject(Department.class);
+        
+        department.setLang("DE");
+        department.setText("Fakultät / Institut");
+        
+        context.commitChanges();
         
         System.out.println( "Hello World!" );
     }
