@@ -1,4 +1,4 @@
-package unidue.reserve_collections_command;
+package unidue.rcc;
 
 /*
  * #%L

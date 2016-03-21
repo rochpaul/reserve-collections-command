@@ -25,6 +25,8 @@
         <log4j.version>1.2.17</log4j.version>
         <args4j.version>2.32</args4j.version>
 
+        <cayenne-client.version>3.1</cayenne-client.version>
+        <resin-hessian.version>3.1.6</resin-hessian.version>
     </properties>
 
     <dependencies>
@@ -51,6 +53,21 @@
             <artifactId>args4j</artifactId>
             <version>${args4j.version}</version>
         </dependency>
+
+
+        <!-- cayenne -->
+        <dependency>
+            <groupId>org.apache.cayenne</groupId>
+            <artifactId>cayenne-client</artifactId>
+            <!-- Here specify the version of Cayenne you are actually using -->
+            <version>3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>resin-hessian</artifactId>
+            <version>3.1.6</version>
+        </dependency>
+
     </dependencies>
 
 
@@ -131,7 +148,7 @@
                         <archive>
                             <manifest>
                                 <!-- Jar file entry point -->
-                                <mainClass>unidue.reserve_collections_command.App</mainClass>
+                                <mainClass>unidue.rcc.App</mainClass>
                             </manifest>
                         </archive>
                         <descriptorRefs>
@@ -141,6 +158,20 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-
     </build>
+
+    <repositories>
+        <repository>
+            <id>caucho</id>
+            <name>Caucho Repository</name>
+            <url>http://caucho.com/m2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
 </project>
